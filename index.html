@@ -1,0 +1,65 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>1&quot; Button Maker</title>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
+  </head>
+  <body>
+    <div id="svg_button"></div>
+
+    <hr />
+
+    <svg id="svg_button_test" height="300" width="300"><circle cx="150" cy="150" r="55"></circle><text x="150" y="150" font-family="Verdana" font-size="55" fill="#ff0099">hello</text></svg>
+
+    <script type="text/babel">
+    // To get started with this tutorial running your own code, simply remove
+    // the script tag loading scripts/example.js and start writing code here.
+
+    var SVGComponent = React.createClass({
+      render: function() {
+        return <svg {...this.props}>{this.props.children}</svg>;
+      }
+    });
+
+    var Rectangle = React.createClass({
+      render: function() {
+        return <rect {...this.props}>{this.props.children}</rect>;
+      }
+    });
+
+    var Circle = React.createClass({
+      render: function() {
+        return <circle {...this.props}>{this.props.children}</circle>;
+      }
+    });
+
+    var ButtonLabel = React.createClass({
+      render: function() {
+        return <text {...this.props}>{this.props.children}</text>;
+      }
+    });
+
+    var Group = React.createClass({
+      render: function() {
+        return <g {...this.props}>{this.props.children}</g>;
+      }
+    });
+
+    ReactDOM.render(
+      <SVGComponent height="300" width="300">
+        <Group>
+        <Circle cx="150" cy="150" r="55" />
+        <ButtonLabel x="50%" y="50%" fontFamily="Verdana" fill="#ff0099" textAnchor="middle">hello</ButtonLabel>
+        </Group>
+      </SVGComponent>,
+      document.getElementById('svg_button')
+    );
+    </script>
+  </body>
+</html>
